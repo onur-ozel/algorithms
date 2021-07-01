@@ -13,15 +13,23 @@ class AlgorithmsApplicationTests {
 	void contextLoads() {
 	}
 
-	AlgorithmsApplication algorithmApp = null;
+	static AlgorithmsApplication algorithmApp = null;
 
 	@BeforeAll
-	public void setup() {
+	public static void setup() {
 		algorithmApp = new AlgorithmsApplication();
 	}
 
 	@Test
 	public void twoSumTest() {
 		assertArrayEquals(algorithmApp.twoSum(new int[] { 2, 7, 11, 15 }, 9), new int[] { 0, 1 });
+		assertArrayEquals(algorithmApp.twoSum(new int[] { 3, 2, 4 }, 6), new int[] { 1, 2 });
+		assertArrayEquals(algorithmApp.twoSum(new int[] { 3, 3 }, 6), new int[] { 0, 1 });
+	}
+
+	@Test
+	public void twoSum_BinarySearchTest() {
+		assertArrayEquals(algorithmApp.twoSum_BinarySearch(new int[] { 2, 7, 11, 15 }, 9), new int[] { 0, 1 });
+		assertArrayEquals(algorithmApp.twoSum_BinarySearch(new int[] { 3, 3 }, 6), new int[] { 0, 1 });
 	}
 }
