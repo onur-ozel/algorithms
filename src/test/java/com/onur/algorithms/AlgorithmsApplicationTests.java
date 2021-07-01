@@ -1,6 +1,7 @@
 package com.onur.algorithms;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -47,5 +48,14 @@ class AlgorithmsApplicationTests {
 				new ListNode(new int[] { 9, 9, 9, 9 }));
 
 		assertArrayEquals(result.toArray(), new int[] { 8, 9, 9, 9, 0, 0, 0, 1 });
+	}
+
+	@Test
+	public void lengthOfLongestSubstringTest() {
+		assertEquals(algorithmApp.lengthOfLongestSubstring("abba"), 2);
+		assertEquals(algorithmApp.lengthOfLongestSubstring("abcabcbb"), 3);
+		assertEquals(algorithmApp.lengthOfLongestSubstring("bbbbb"), 1);
+		assertEquals(algorithmApp.lengthOfLongestSubstring("pwwkew"), 3);
+		assertEquals(algorithmApp.lengthOfLongestSubstring(""), 0);
 	}
 }

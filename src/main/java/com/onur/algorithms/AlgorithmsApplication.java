@@ -130,4 +130,23 @@ public class AlgorithmsApplication {
 		return head;
 	}
 	// #endregion
+
+	// https://leetcode.com/problems/longest-substring-without-repeating-characters/
+	// 3. Longest Substring Without Repeating Characters | Medium
+	// TimeComplexity O(n) | SpaceComplexity O(1)
+	public int lengthOfLongestSubstring(String s) {
+		int longestLength = 0;
+		int currentIndex = 0;
+		int[] lastIndexOfChar = new int[256];
+
+		Arrays.fill(lastIndexOfChar, -1);
+
+		for (int i = 0; i < s.length(); i++) {
+			currentIndex = Math.max(currentIndex, lastIndexOfChar[s.charAt(i)] + 1);
+			longestLength = Math.max(longestLength, i - currentIndex + 1);
+			lastIndexOfChar[s.charAt(i)] = i;
+		}
+
+		return longestLength;
+	}
 }
