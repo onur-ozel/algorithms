@@ -67,4 +67,11 @@ class AlgorithmsApplicationTests {
 		assertEquals(algorithmApp.longestPalindrome("a"), "a");
 		assertEquals(algorithmApp.longestPalindrome("ac"), "a");
 	}
+
+	@Test
+	public void zigzagConvertTest() {
+		assertEquals(algorithmApp.zigzagConvert("PAYPALISHIRING", 3), "PAHNAPLSIIGYIR");
+		assertEquals(algorithmApp.zigzagConvert("PAYPALISHIRING", 4), "PINALSIGYAHRPI");
+		assertEquals(algorithmApp.zigzagConvert("A", 1), "A");
+	}
 }
