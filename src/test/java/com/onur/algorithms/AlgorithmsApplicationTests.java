@@ -58,4 +58,13 @@ class AlgorithmsApplicationTests {
 		assertEquals(algorithmApp.lengthOfLongestSubstring("pwwkew"), 3);
 		assertEquals(algorithmApp.lengthOfLongestSubstring(""), 0);
 	}
+
+	@Test
+	public void longestPalindromeTest() {
+		assertEquals(algorithmApp.longestPalindrome("cbbd"), "bb");
+		assertEquals(algorithmApp.longestPalindrome("baab"), "baab");
+		assertEquals(algorithmApp.longestPalindrome("babad"), "bab");
+		assertEquals(algorithmApp.longestPalindrome("a"), "a");
+		assertEquals(algorithmApp.longestPalindrome("ac"), "a");
+	}
 }

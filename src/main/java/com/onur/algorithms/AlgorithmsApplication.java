@@ -149,4 +149,41 @@ public class AlgorithmsApplication {
 
 		return longestLength;
 	}
+
+	// https://leetcode.com/problems/longest-palindromic-substring/
+	// 5. Longest Palindromic Substring | Medium
+	// TimeComplexity O(n2) | SpaceComplexity O(1)
+	public String longestPalindrome(String s) {
+		int length = 0;
+		int startIndex = 0;
+
+		for (int i = 0; i < s.length(); i++) {
+			int evenLength = getLengthOfPalindrome(i, i + 1, s); // baab
+			int oddLength = getLengthOfPalindrome(i, i, s); // cbabc
+
+			if (length < Math.max(evenLength, oddLength)) {
+				length = Math.max(evenLength, oddLength);
+
+				if (evenLength > oddLength) {
+					startIndex = i - (evenLength / 2) + 1;
+				} else {
+					startIndex = i - (oddLength / 2);
+				}
+			}
+		}
+
+		return s.substring(startIndex, startIndex + length);
+	}
+
+	private int getLengthOfPalindrome(int i, int j, String s) {
+		while (i >= 0 && j < s.length() && s.charAt(i) == s.charAt(j)) {
+			i--;
+			j++;
+		}
+
+		i++;
+		j--;
+
+		return j - i + 1;
+	}
 }
