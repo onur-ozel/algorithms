@@ -304,4 +304,31 @@ public class AlgorithmsApplication {
 
 		return maxArea;
 	}
+
+	// https://leetcode.com/problems/roman-to-integer/
+	// 13. Roman to Integer | Easy
+	// TimeComplexity O(n) | SpaceComplexity O(1)
+	public int romanToInt(String s) {
+		int result = 0;
+		Map<Character, Integer> romanNumbers = new HashMap<>();
+		romanNumbers.put('I', 1);
+		romanNumbers.put('V', 5);
+		romanNumbers.put('X', 10);
+		romanNumbers.put('L', 50);
+		romanNumbers.put('C', 100);
+		romanNumbers.put('D', 500);
+		romanNumbers.put('M', 1000);
+
+		result = romanNumbers.get(s.charAt(s.length() - 1));
+
+		for (int i = s.length() - 2; i >= 0; i--) {
+			if (romanNumbers.get(s.charAt(i)) >= romanNumbers.get(s.charAt(i + 1))) {
+				result += romanNumbers.get(s.charAt(i));
+			} else {
+				result -= romanNumbers.get(s.charAt(i));
+			}
+		}
+
+		return result;
+	}
 }

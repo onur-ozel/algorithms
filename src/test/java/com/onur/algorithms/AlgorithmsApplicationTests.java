@@ -100,4 +100,13 @@ class AlgorithmsApplicationTests {
 		assertEquals(algorithmApp.maxArea(new int[] { 4, 3, 2, 1, 4 }), 16);
 		assertEquals(algorithmApp.maxArea(new int[] { 1, 2, 1 }), 2);
 	}
+
+	@Test
+	public void romanToIntTest() {
+		assertEquals(algorithmApp.romanToInt("III"), 3);
+		assertEquals(algorithmApp.romanToInt("IV"), 4);
+		assertEquals(algorithmApp.romanToInt("IX"), 9);
+		assertEquals(algorithmApp.romanToInt("LVIII"), 58);
+		assertEquals(algorithmApp.romanToInt("MCMXCIV"), 1994);
+	}
 }
