@@ -128,4 +128,16 @@ class AlgorithmsApplicationTests {
 
 		assertArrayEquals(result1, new String[] { "ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf" });
 	}
+
+	@Test
+	public void removeNthFromEndTest() {
+		ListNode result3 = algorithmApp.removeNthFromEnd(new ListNode(new int[] { 1, 2 }), 2);
+		assertArrayEquals(result3.toArray(), new int[] { 2 });
+
+		ListNode result2 = algorithmApp.removeNthFromEnd(new ListNode(new int[] { 1, 2 }), 1);
+		assertArrayEquals(result2.toArray(), new int[] { 1 });
+
+		ListNode result = algorithmApp.removeNthFromEnd(new ListNode(new int[] { 1, 2, 3, 4, 5 }), 2);
+		assertArrayEquals(result.toArray(), new int[] { 1, 2, 3, 5 });
+	}
 }

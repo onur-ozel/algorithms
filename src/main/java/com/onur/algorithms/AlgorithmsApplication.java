@@ -497,4 +497,48 @@ public class AlgorithmsApplication {
 
 	// #endregion
 
+	// https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+	// 19. Remove Nth Node From End of List | Medium
+	// #region
+	// TimeComplexity O(n) | SpaceComplexity O(n)
+	public ListNode removeNthFromEnd(ListNode head, int n) {
+		ListNode dummy = new ListNode();
+		dummy.next = head;
+		ListNode runner = dummy;
+		ListNode curr = dummy;
+
+		for (int i = 0; i < n && runner != null; i++) {
+			runner = runner.next;
+		}
+
+		while (runner.next != null) {
+			runner = runner.next;
+			curr = curr.next;
+		}
+
+		curr.next = curr.next.next;
+
+		return dummy.next;
+	}
+
+	public ListNode removeNthFromEndSolution2(ListNode head, int n) {
+		Stack<ListNode> stack = new Stack<>();
+		ListNode curr = head;
+
+		while (curr != null) {
+			stack.add(curr);
+			curr = curr.next;
+		}
+
+		while (n > 1) {
+			stack.pop();
+			n--;
+		}
+
+		ListNode removedItem = stack.pop();
+		stack.pop().next = removedItem.next;
+
+		return head;
+	}
+	// #endregion
 }
