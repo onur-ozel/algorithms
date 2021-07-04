@@ -416,4 +416,85 @@ public class AlgorithmsApplication {
 
 		return result;
 	}
+
+	// https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+	// 17. Letter Combinations of a Phone Number | Medium
+	// #region
+	// TimeComplexity O(n*m) | SpaceComplexity O(n*m)
+	public List<String> letterCombinationsIterative(String digits) {
+		LinkedList<String> result = new LinkedList<>();
+
+		if (digits.isEmpty()) {
+			return result;
+		}
+
+		Map<Character, Character[]> letters = new HashMap<>();
+
+		letters.put('2', new Character[] { 'a', 'b', 'c' });
+		letters.put('3', new Character[] { 'd', 'e', 'f' });
+		letters.put('4', new Character[] { 'g', 'h', 'i' });
+		letters.put('5', new Character[] { 'j', 'k', 'l' });
+		letters.put('6', new Character[] { 'm', 'n', 'o' });
+		letters.put('7', new Character[] { 'p', 'q', 'r', 's' });
+		letters.put('8', new Character[] { 't', 'u', 'v' });
+		letters.put('9', new Character[] { 'w', 'x', 'y', 'z' });
+
+		result.add("");
+
+		for (int i = 0; i < digits.length(); i++) {
+			while (result.peekFirst().length() == i) {
+				String current = result.poll();
+
+				for (Character letter : letters.get(digits.charAt(i))) {
+					result.add(current + letter);
+				}
+			}
+		}
+
+		return result;
+	}
+
+	// TimeComplexity O(n*m) | SpaceComplexity O(n*m)
+	public List<String> letterCombinationsBacktracking(String digits) {
+		List<String> result = new LinkedList<>();
+
+		if (digits.isEmpty()) {
+			return result;
+		}
+
+		StringBuilder sb = new StringBuilder();
+		Map<Character, Character[]> letters = new HashMap<>();
+
+		letters.put('2', new Character[] { 'a', 'b', 'c' });
+		letters.put('3', new Character[] { 'd', 'e', 'f' });
+		letters.put('4', new Character[] { 'g', 'h', 'i' });
+		letters.put('5', new Character[] { 'j', 'k', 'l' });
+		letters.put('6', new Character[] { 'm', 'n', 'o' });
+		letters.put('7', new Character[] { 'p', 'q', 'r', 's' });
+		letters.put('8', new Character[] { 't', 'u', 'v' });
+		letters.put('9', new Character[] { 'w', 'x', 'y', 'z' });
+
+		letterCombinationsBacktrackingHelper(digits, sb, letters, result, 0);
+
+		return result;
+	}
+
+	private void letterCombinationsBacktrackingHelper(String digits, StringBuilder sb,
+			Map<Character, Character[]> letters, List<String> result, int index) {
+		if (sb.length() == digits.length()) {
+			result.add(sb.toString());
+			return;
+		}
+
+		for (int i = index; i < digits.length(); i++) {
+			for (Character letter : letters.get(digits.charAt(i))) {
+				sb.append(letter);
+				letterCombinationsBacktrackingHelper(digits, sb, letters, result, i + 1);
+				sb.setLength(sb.length() - 1);
+			}
+		}
+	}
+
+	// #endregion
+
 }

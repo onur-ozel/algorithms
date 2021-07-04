@@ -121,4 +121,11 @@ class AlgorithmsApplicationTests {
 		assertEquals(algorithmApp.longestCommonPrefix(new String[] { "flower", "flow", "flight" }), "fl");
 		assertEquals(algorithmApp.longestCommonPrefix(new String[] { "dog", "racecar", "car" }), "");
 	}
+
+	@Test
+	public void letterCombinationsIterativeTest() {
+		String[] result1 = algorithmApp.letterCombinationsIterative("23").stream().toArray(String[]::new);
+
+		assertArrayEquals(result1, new String[] { "ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf" });
+	}
 }
