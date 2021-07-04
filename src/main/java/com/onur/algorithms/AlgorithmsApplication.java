@@ -214,4 +214,32 @@ public class AlgorithmsApplication {
 
 		return sb[0].toString();
 	}
+
+	// https://leetcode.com/problems/reverse-integer/
+	// 7. Reverse Integer | Easy
+	// TimeComplexity O(n) | SpaceComplexity O(1)
+	public int reverse(int x) {
+		int result = 0;
+		int sign = 1;
+
+		if (x < 0) {
+			sign = -1;
+			x = Math.abs(x);
+		}
+
+		while (x != 0) {
+			int digit = x % 10;
+
+			int newResult = result * 10 + digit;
+			
+			if ((newResult - digit) / 10 != result)
+				return 0;
+
+			result = newResult;
+
+			x /= 10;
+		}
+
+		return result * sign;
+	}
 }

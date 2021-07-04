@@ -74,4 +74,12 @@ class AlgorithmsApplicationTests {
 		assertEquals(algorithmApp.zigzagConvert("PAYPALISHIRING", 4), "PINALSIGYAHRPI");
 		assertEquals(algorithmApp.zigzagConvert("A", 1), "A");
 	}
+
+	@Test
+	public void reverseTest() {
+		assertEquals(algorithmApp.reverse(123), 321);
+		assertEquals(algorithmApp.reverse(-123), -321);
+		assertEquals(algorithmApp.reverse(120), 21);
+		assertEquals(algorithmApp.reverse(0), 0);
+	}
 }
