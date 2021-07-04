@@ -149,4 +149,11 @@ class AlgorithmsApplicationTests {
 		assertEquals(algorithmApp.isValid("([)]"), false);
 		assertEquals(algorithmApp.isValid("{[]}"), true);
 	}
+
+	@Test
+	public void mergeTwoListsTest() {
+		ListNode result1 = algorithmApp.mergeTwoLists(new ListNode(new int[] { 1, 2, 4 }),
+				new ListNode(new int[] { 1, 3, 4 }));
+		assertArrayEquals(result1.toArray(), new int[] { 1, 1, 2, 3, 4, 4 });
+	}
 }
