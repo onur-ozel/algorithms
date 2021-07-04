@@ -109,4 +109,10 @@ class AlgorithmsApplicationTests {
 		assertEquals(algorithmApp.romanToInt("LVIII"), 58);
 		assertEquals(algorithmApp.romanToInt("MCMXCIV"), 1994);
 	}
+
+	@Test
+	public void longestCommonPrefixTest() {
+		assertEquals(algorithmApp.longestCommonPrefix(new String[] { "flower", "flow", "flight" }), "fl");
+		assertEquals(algorithmApp.longestCommonPrefix(new String[] { "dog", "racecar", "car" }), "");
+	}
 }
