@@ -231,13 +231,52 @@ public class AlgorithmsApplication {
 			int digit = x % 10;
 
 			int newResult = result * 10 + digit;
-			
+
 			if ((newResult - digit) / 10 != result)
 				return 0;
 
 			result = newResult;
 
 			x /= 10;
+		}
+
+		return result * sign;
+	}
+
+	// https://leetcode.com/problems/string-to-integer-atoi/
+	// 8. String to Integer (atoi) | Medium
+	// TimeComplexity O(n) | SpaceComplexity O()
+	public int myAtoi(String s) {
+		int result = 0;
+		int index = 0;
+		int sign = 1;
+
+		// trim whitespaces
+		while (index < s.length() && Character.isWhitespace(s.charAt(index))) {
+			index++;
+		}
+
+		// detect sign
+		if (index < s.length() && (s.charAt(index) == '-' || s.charAt(index) == '+')) {
+			sign = s.charAt(index) == '-' ? -1 : 1;
+			index++;
+		}
+
+		// return 0 if it doesnt start with digit
+		if (index < s.length() && !Character.isDigit(s.charAt(index))) {
+			return 0;
+		}
+
+		// traverse digits
+		while (index < s.length() && Character.isDigit(s.charAt(index))) {
+			int digit = Character.getNumericValue(s.charAt(index));
+
+			// check overflow
+			if (result > Integer.MAX_VALUE / 10 || (result == Integer.MAX_VALUE / 10 && digit > Integer.MAX_VALUE % 10))
+				return sign == -1 ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+
+			result = result * 10 + digit;
+			index++;
 		}
 
 		return result * sign;

@@ -77,9 +77,20 @@ class AlgorithmsApplicationTests {
 
 	@Test
 	public void reverseTest() {
+		assertEquals(algorithmApp.reverse(2147483647), 0);
 		assertEquals(algorithmApp.reverse(123), 321);
 		assertEquals(algorithmApp.reverse(-123), -321);
 		assertEquals(algorithmApp.reverse(120), 21);
 		assertEquals(algorithmApp.reverse(0), 0);
+	}
+
+	@Test
+	public void myAtoiTest() {
+		assertEquals(algorithmApp.myAtoi("2147483648"), 2147483647);
+		assertEquals(algorithmApp.myAtoi("42"), 42);
+		assertEquals(algorithmApp.myAtoi("   -42"), -42);
+		assertEquals(algorithmApp.myAtoi("4193 with words"), 4193);
+		assertEquals(algorithmApp.myAtoi("words and 987"), 0);
+		assertEquals(algorithmApp.myAtoi("-91283472332"), -2147483648);
 	}
 }
