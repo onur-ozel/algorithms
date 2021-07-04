@@ -245,7 +245,7 @@ public class AlgorithmsApplication {
 
 	// https://leetcode.com/problems/string-to-integer-atoi/
 	// 8. String to Integer (atoi) | Medium
-	// TimeComplexity O(n) | SpaceComplexity O()
+	// TimeComplexity O(n) | SpaceComplexity O(1)
 	public int myAtoi(String s) {
 		int result = 0;
 		int index = 0;
@@ -280,5 +280,28 @@ public class AlgorithmsApplication {
 		}
 
 		return result * sign;
+	}
+
+	// https://leetcode.com/problems/container-with-most-water/
+	// 11. Container With Most Water | Medium
+	// TimeComplexity O(n) | SpaceComplexity O(1)
+	public int maxArea(int[] height) {
+		int maxArea = 0;
+		int start = 0;
+		int end = height.length - 1;
+
+		while (start < end) {
+			int currentArea = (end - start) * (Math.min(height[start], height[end]));
+
+			maxArea = Math.max(maxArea, currentArea);
+
+			if (height[start] < height[end]) {
+				start++;
+			} else {
+				end--;
+			}
+		}
+
+		return maxArea;
 	}
 }

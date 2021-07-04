@@ -93,4 +93,11 @@ class AlgorithmsApplicationTests {
 		assertEquals(algorithmApp.myAtoi("words and 987"), 0);
 		assertEquals(algorithmApp.myAtoi("-91283472332"), -2147483648);
 	}
+
+	@Test
+	public void maxAreaTest() {
+		assertEquals(algorithmApp.maxArea(new int[] { 1, 1 }), 1);
+		assertEquals(algorithmApp.maxArea(new int[] { 4, 3, 2, 1, 4 }), 16);
+		assertEquals(algorithmApp.maxArea(new int[] { 1, 2, 1 }), 2);
+	}
 }
