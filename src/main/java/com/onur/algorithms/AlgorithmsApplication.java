@@ -541,4 +541,25 @@ public class AlgorithmsApplication {
 		return head;
 	}
 	// #endregion
+
+	// https://leetcode.com/problems/valid-parentheses/
+	// 20. Valid Parentheses | Easy
+	// TimeComplexity O(n) | SpaceComplexity O(n)
+	public boolean isValid(String s) {
+		Stack<Character> parentheses = new Stack<>();
+
+		for (Character character : s.toCharArray()) {
+			if (character == '(') {
+				parentheses.push(')');
+			} else if (character == '{') {
+				parentheses.push('}');
+			} else if (character == '[') {
+				parentheses.push(']');
+			} else if (parentheses.isEmpty() || parentheses.pop() != character) {
+				return false;
+			}
+		}
+
+		return parentheses.isEmpty();
+	}
 }

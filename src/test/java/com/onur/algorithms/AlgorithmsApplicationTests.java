@@ -140,4 +140,13 @@ class AlgorithmsApplicationTests {
 		ListNode result = algorithmApp.removeNthFromEnd(new ListNode(new int[] { 1, 2, 3, 4, 5 }), 2);
 		assertArrayEquals(result.toArray(), new int[] { 1, 2, 3, 5 });
 	}
+
+	@Test
+	public void isValidTest() {
+		assertEquals(algorithmApp.isValid("()"), true);
+		assertEquals(algorithmApp.isValid("()[]{}"), true);
+		assertEquals(algorithmApp.isValid("(]"), false);
+		assertEquals(algorithmApp.isValid("([)]"), false);
+		assertEquals(algorithmApp.isValid("{[]}"), true);
+	}
 }
