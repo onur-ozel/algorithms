@@ -34,6 +34,7 @@ public class AlgorithmsApplication {
 		return result;
 	}
 
+	// array is sorted
 	// TimeComplexity O(nlogn) | SpaceComplexity O(1)
 	public int[] twoSumBinarySearch(int[] nums, int target) {
 		int[] result = new int[2];
@@ -60,6 +61,32 @@ public class AlgorithmsApplication {
 				}
 			}
 
+		}
+
+		return result;
+	}
+
+	// array is sorted
+	// TimeComplexity O(n) | SpaceComplexity O(1)
+	public int[] twoSumBCR(int[] nums, int target) {
+		int[] result = new int[2];
+
+		int start = 0;
+		int end = nums.length - 1;
+
+		while (start < end) {
+			if (nums[start] + nums[end] == target) {
+				result[0] = start;
+				result[1] = end;
+
+				return result;
+			}
+
+			if (nums[start] + nums[end] < target) {
+				start++;
+			} else {
+				end--;
+			}
 		}
 
 		return result;
@@ -334,7 +361,7 @@ public class AlgorithmsApplication {
 
 	// https://leetcode.com/problems/longest-common-prefix/
 	// 14. Longest Common Prefix | Easy
-	// TimeComplexity O() | SpaceComplexity O()
+	// TimeComplexity O(nm) | SpaceComplexity O(n)
 	public String longestCommonPrefix(String[] strs) {
 		String commonPrefix = strs[0];
 
@@ -349,5 +376,44 @@ public class AlgorithmsApplication {
 		}
 
 		return commonPrefix;
+	}
+
+	// https://leetcode.com/problems/3sum/
+	// 15. 3Sum | Medium
+	// TimeComplexity O(n2) | SpaceComplexity O(1)
+	public List<List<Integer>> threeSum(int[] nums) {
+		List<List<Integer>> result = new ArrayList<List<Integer>>();
+
+		Arrays.sort(nums);
+
+		for (int i = 0; i < nums.length; i++) {
+			if (i == 0 || nums[i] != nums[i - 1]) {
+				int start = i + 1;
+				int end = nums.length - 1;
+
+				while (start < end) {
+					if (nums[i] + nums[start] + nums[end] == 0) {
+						result.add(Arrays.asList(nums[i], nums[start], nums[end]));
+
+						while (start < end && nums[start] == nums[start + 1]) {
+							start++;
+						}
+
+						while (start < end && nums[end] == nums[end - 1]) {
+							end--;
+						}
+
+						start++;
+						end--;
+					} else if (nums[i] + nums[start] + nums[end] > 0) {
+						end--;
+					} else {
+						start++;
+					}
+				}
+			}
+		}
+
+		return result;
 	}
 }

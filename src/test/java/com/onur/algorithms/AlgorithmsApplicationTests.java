@@ -35,6 +35,12 @@ class AlgorithmsApplicationTests {
 	}
 
 	@Test
+	public void twoSum_BCRTest() {
+		assertArrayEquals(algorithmApp.twoSumBCR(new int[] { 2, 7, 11, 15 }, 9), new int[] { 0, 1 });
+		assertArrayEquals(algorithmApp.twoSumBCR(new int[] { 3, 3 }, 6), new int[] { 0, 1 });
+	}
+
+	@Test
 	public void addTwoNumbersTest() {
 		ListNode result = algorithmApp.addTwoNumbers(new ListNode(new int[] { 2, 4, 3 }),
 				new ListNode(new int[] { 5, 6, 4 }));
