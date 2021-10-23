@@ -590,4 +590,70 @@ public class AlgorithmsApplication {
 
 		return dummy.next;
 	}
+
+	public int minumumCoinFlips(String coins) {
+		return Math.min(minumumCoinFlipBacktracking(coins, 0, false, 'T', 0),
+				minumumCoinFlipBacktracking(coins, 0, false, 'H', 0));
+	}
+
+	public int minumumCoinFlipBacktracking(String coins, int coinFlip, boolean hasSequence, char prevChar, int index) {
+		if (index == coins.length()) {
+			return coinFlip;
+		}
+
+		if (hasSequence) {
+			while (index < coins.length()) {
+				if (coins.charAt(index) != prevChar) {
+					coinFlip++;
+				}
+
+				index++;
+			}
+
+			return coinFlip;
+		} else {
+			if (coins.charAt(index) == prevChar) {
+				return Math.min(minumumCoinFlipBacktracking(coins, coinFlip, false, coins.charAt(index), index + 1),
+						minumumCoinFlipBacktracking(coins, coinFlip + 1, true, coins.charAt(index) == 'H' ? 'T' : 'H',
+								index + 1));
+			} else {
+				return Math.min(
+						minumumCoinFlipBacktracking(coins, coinFlip + 1, false, coins.charAt(index) == 'H' ? 'T' : 'H',
+								index + 1),
+						minumumCoinFlipBacktracking(coins, coinFlip, true, coins.charAt(index), index + 1));
+			}
+
+		}
+	}
+
+	public int minMoves(int[] arr) {
+		return Math.min(minMovesBacktracking(arr, 0, 0, 0), minMovesBacktracking(arr, 0, 1, 0));
+	}
+
+	public int minMovesBacktracking(int[] arr, int index, int beginningValue, int swapCount) {
+		if (index == arr.length) {
+			return swapCount;
+		}
+
+		int i = index;
+		int currSwapCount = swapCount;
+
+		for (; i < arr.length; i++) {
+			if (arr[i] != beginningValue) {
+				currSwapCount++;
+			} else {
+				int temp = arr[i];
+				arr[i] = arr[index];
+				arr[index] = temp;
+				break;
+			}
+		}
+
+		if (i == arr.length) {
+			return swapCount;
+		}
+
+		return minMovesBacktracking(arr, index + 1, beginningValue, currSwapCount);
+	}
+
 }

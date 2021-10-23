@@ -156,4 +156,19 @@ class AlgorithmsApplicationTests {
 				new ListNode(new int[] { 1, 3, 4 }));
 		assertArrayEquals(result1.toArray(), new int[] { 1, 1, 2, 3, 4, 4 });
 	}
+
+	@Test
+	public void minumumCoinFlips() {
+		assertEquals(algorithmApp.minumumCoinFlips("T"), 0);
+		assertEquals(algorithmApp.minumumCoinFlips("TTHTTTHTT"), 2);
+		assertEquals(algorithmApp.minumumCoinFlips("HHTHTT"), 1);
+		assertEquals(algorithmApp.minumumCoinFlips("HHHHTT"), 0);
+		assertEquals(algorithmApp.minumumCoinFlips("TTHHTT"), 2);
+	}
+
+	@Test
+	public void minMoves() {
+		assertEquals(algorithmApp.minMoves(new int[] { 0, 1, 0, 1 }), 1);
+
+	}
 }
